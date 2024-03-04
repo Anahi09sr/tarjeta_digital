@@ -1,0 +1,96 @@
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html {
+  font-size: 62.5%;
+}
+body {
+  font-family: 'Poppins', sans-serif;
+}
+.hidden {
+  display: none !important;
+}
+* {
+  font-family: 'Poppins', sans-serif;
+}
+.header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 1rem;
+  border-bottom: 2px solid #5C5CAD;
+}
+.header .header__logo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.header .header__logo img {
+  width: 100px;
+}
+.header nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.header nav a {
+  color: #5C5CAD;
+  text-decoration: none;
+  margin-left: 1rem;
+}
+#btn_nueva_tarjeta {
+  background-color: #0D0163;
+  color: #ffffff;
+}
+.control-tarjetas {
+  max-width: 1110px;
+  margin: 0 auto;
+}
+.control-tarjetas .tarjeta .tarjeta__title h1 {
+  font-size: 2.4rem;
+  margin: 1.5rem 1.5rem 3rem 1.5rem;
+  text-align: center;
+}
+.control-tarjetas .tarjeta__content .tab-content {
+  margin: 2rem;
+  margin-bottom: 20rem;
+}
+.control-tarjetas .tarjeta__content .tab-content #btn_editar {
+  color: #f49600;
+  font-size: 2rem;
+  margin: 0 8px 0 8px;
+}
+.control-tarjetas .tarjeta__content .tab-content #btn_eliminar {
+  color: red;
+  font-size: 2rem;
+  margin: 0 8px 0 8px;
+}
+footer {
+  border-top: 1px solid #5C5CAD;
+  position: relative;
+  bottom: 0 !important;
+  text-align: center;
+  margin-top: 50px;
+  padding: 10px;
+}
+footer h2 {
+  font-size: 1.8rem;
+}
+footer p {
+  font-size: 1.4rem;
+}

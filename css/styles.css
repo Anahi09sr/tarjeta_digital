@@ -1,0 +1,65 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    margin: 0;
+}
+
+.login-container {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+}
+.form-container {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+}
+
+.user-logo {
+    display: block;
+    margin: 0 auto;
+    width: 100px; /* Ancho deseado de la imagen */
+    height: auto; /* Altura automática para mantener la proporción */
+    margin-bottom: 5px; /* Espacio entre la imagen y el título */
+}
+
+h1 {
+    color: #0d0163;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 25px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 5px;
+}
+
+input {
+    margin-bottom: 20px;
+}
+
+button {
+    background-color: #5C5CAD;
+    color: #ffffff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #CCD4DC;
+}

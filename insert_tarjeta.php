@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         // Definir un comportamiento por defecto si no se proporciona el logo
         echo "Error: Uno o ambos archivos no fueron cargados correctamente.";
-    exit();
+        exit();
     }
 
     if (is_uploaded_file($_FILES['foto']['tmp_name'])) {
@@ -47,24 +47,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             exit();
         }
         $nombreArchivo = $_FILES['foto']['name'];
-        $nombreArchivo = $_FILES['logo']['name'];
-        $consulta = $bd->prepare("INSERT INTO details(nombre,foto,empresa,logo,puesto,telefono,email1,email2,whatsapp,instagram,facebook,linkedin,tiktok,twitter,github,sitioWeb) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);");
+
+        // Modificar la consulta para incluir la columna tipofoto
+        $consulta = $bd->prepare("INSERT INTO details(nombre, foto, tipofoto, empresa, logo, puesto, telefono, email1, email2, whatsapp, instagram, facebook, linkedin, tiktok, twitter, github, sitioWeb) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);");
         $consulta->bindParam(1, $nombre, PDO::PARAM_STR, 100);
         $consulta->bindParam(2, $datos_imagen, PDO::PARAM_LOB);
-        $consulta->bindParam(3, $empresa, PDO::PARAM_STR, 100);
-        $consulta->bindParam(4, $datos_logo, PDO::PARAM_LOB); // Cambiado a PARAM_LOB
-        $consulta->bindParam(5, $puesto, PDO::PARAM_STR, 50);
-        $consulta->bindParam(6, $telefono, PDO::PARAM_STR, 10);
-        $consulta->bindParam(7, $email1, PDO::PARAM_STR, 50);
-        $consulta->bindParam(8, $email2, PDO::PARAM_STR, 50);
-        $consulta->bindParam(9, $whatsapp, PDO::PARAM_STR, 80);
-        $consulta->bindParam(10, $instagram, PDO::PARAM_STR, 80);
-        $consulta->bindParam(11, $facebook, PDO::PARAM_STR, 80);
-        $consulta->bindParam(12, $linkedin, PDO::PARAM_STR, 80);
-        $consulta->bindParam(13, $tiktok, PDO::PARAM_STR, 80);
-        $consulta->bindParam(14, $twitter, PDO::PARAM_STR, 80);
-        $consulta->bindParam(15, $github, PDO::PARAM_STR, 80);
-        $consulta->bindParam(16, $sitioWeb, PDO::PARAM_STR, 80);
+        $consulta->bindParam(3, $tipoArchivo, PDO::PARAM_STR, 40); // Cambiado a PARAM_STR
+        $consulta->bindParam(4, $empresa, PDO::PARAM_STR, 100);
+        $consulta->bindParam(5, $datos_logo, PDO::PARAM_LOB);
+        $consulta->bindParam(6, $puesto, PDO::PARAM_STR, 50);
+        $consulta->bindParam(7, $telefono, PDO::PARAM_STR, 10);
+        $consulta->bindParam(8, $email1, PDO::PARAM_STR, 50);
+        $consulta->bindParam(9, $email2, PDO::PARAM_STR, 50);
+        $consulta->bindParam(10, $whatsapp, PDO::PARAM_STR, 80);
+        $consulta->bindParam(11, $instagram, PDO::PARAM_STR, 80);
+        $consulta->bindParam(12, $facebook, PDO::PARAM_STR, 80);
+        $consulta->bindParam(13, $linkedin, PDO::PARAM_STR, 80);
+        $consulta->bindParam(14, $tiktok, PDO::PARAM_STR, 80);
+        $consulta->bindParam(15, $twitter, PDO::PARAM_STR, 80);
+        $consulta->bindParam(16, $github, PDO::PARAM_STR, 80);
+        $consulta->bindParam(17, $sitioWeb, PDO::PARAM_STR, 80);
 
         $consulta->execute();
         if ($consulta) {

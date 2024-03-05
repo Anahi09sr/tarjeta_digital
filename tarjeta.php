@@ -55,17 +55,19 @@ include './model/conexion.php';
                       </td>
                     </tr>
                     <div class="modal-tarjeta">
-                      <div class="modal fade" id="modalEdit<?=$info->id_details ?>" aria-hidden="true" aria-labelledby="modalEditarLabel" tabindex="-1">
+                      <div class="modal fade" id="modalEdit<?=$info->id_details ?>" aria-hidden="true" aria-labelledby="modalEditar<?=$info->id_details ?>Label" tabindex="-1">
                         <div class="modal-dialog modal-lg modal-dialog-centered">
                           <div class="modal-content">
                             <div class="modal-header">
-                              <h5 class="modal-title" id="modalEditarLabel">Detalles de la <br /><strong>Tarjeta</strong></h5>
+                              <h5 class="modal-title" id="modalEditar<?=$info->id_details ?>Label">Detalles de la <br /><strong>Tarjeta</strong></h5>
                               <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
                             <div class="content-form formulario-container" data-info-id="<?php echo $info->id_details; ?>">
-                                <form action="./insert-tarjeta.php" id="formularioEditTarjeta<?= $info->id_details?>" method="POST" enctype="multipart/form-data" accept-charset="utf-8">
-                                  <div class="form-floating mb-3">
+                            <form action="./edit_tarjeta.php" method="POST" enctype="multipart/form-data">
+    <!-- Agrega el campo oculto para id_details -->
+    <input type="hidden" name="id_details" value="<?php echo $info->id_details; ?>">
+                                <div class="form-floating mb-3">
                                     <input class="form-control form-control-lg" value="<?= $info->nombre;?>" placeholder="nombre" type="text" name="nombre" maxlength="100" />
                                     <label class="form-label" for="nombre">Nombre</label>
                                   </div>
@@ -88,7 +90,7 @@ include './model/conexion.php';
                                       <img class="" src="data:<?php echo "$info->tipofoto"?>;base64,<?php echo $imagen_decodificada;?>" alt="Imagen">
                                     <div class="formEdit-img__file">
                                       <label class="form-label" id="formFile" for="ctaImagen">Modificar logo</label>
-                                      <input class="form-control form-control-lg" type="file" name="foto" id="foto<?= $info->id_details;?>" accept="image/jpeg, image/png/">
+                                      <input class="form-control form-control-lg" type="file" name="logo" id="logo<?= $info->id_details;?>" accept="image/jpeg, image/png/">
                                     </div> 
                                   </div>
                                   <div class="form-floating mb-3">
@@ -145,11 +147,11 @@ include './model/conexion.php';
                               </div>
                               <div class="modal-body__buttons">
                                 <button class="btn btn-danger btn-lg" data-bs-dismiss="modal" aria-label="Close" id="modalCancelarBtn">Cancelar</button>
-                                <button class="btn btn-success btn-lg" type="submit" name="guardar">Guardar</button>
+                                <button class="btn btn-success btn-lg" type="submit" name="guardar">Editar</button>
                               </div>
                               <input type="hidden" name="oculto" value=1>
                               <div class="form-floating mb-3">
-                                <div class="" id="mostrar_mensaje_modal1"></div>
+                              <div class="" id="mensajeEditTarjeta<?=$info->id_details?>"></div>
                               </div>
                               </form>
                             </div>
@@ -185,6 +187,8 @@ include './model/conexion.php';
       });
     </script>
   </section>
+  <script src="./js/ajax_modal_editTarjeta.js"></script>
+  <script src="js/script.js"></script>
   <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 </main>
 <?php include './components/footer-usuario.php'; ?>

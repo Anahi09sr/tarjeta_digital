@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
         $nombreArchivo = $_FILES['foto']['name'];
 
-        // Modificar la consulta para incluir la columna tipofoto
+        
         $consulta = $bd->prepare("INSERT INTO details(nombre, foto, tipofoto, empresa, logo, puesto, telefono, email1, email2, whatsapp, instagram, facebook, linkedin, tiktok, twitter, github, sitioWeb) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);");
         $consulta->bindParam(1, $nombre, PDO::PARAM_STR, 100);
         $consulta->bindParam(2, $datos_imagen, PDO::PARAM_LOB);

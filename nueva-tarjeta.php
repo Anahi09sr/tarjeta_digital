@@ -35,7 +35,7 @@
                 <label class="form-label" for="telefono">Télefono </label>
               </div>
               <div class="form-floating mb-3">
-                <input class="form-control form-control-lg" placeholder="Correo electronico" type="email" name="email1" maxlength="50" required="required"/>
+                <input class="form-control form-control-lg" placeholder="Correo electronico" type="email" name="email1" maxlength="50" />
                 <label class="form-label" for="correo">Correo Electronico  </label>
               </div>
               <div class="form-floating mb-3">
@@ -43,35 +43,35 @@
                 <label class="form-label" for="correo2">Correo Electronico (opcional)  </label>
               </div>
               <div class="form-floating mb-3">
-                <input class="form-control form-control-lg" placeholder="whatsApp" type="text" name="whatsapp" maxlength="10" required="required"/>
+                <input class="form-control form-control-lg" placeholder="whatsApp" type="text" name="whatsapp" maxlength="10" />
                 <label class="form-label" for="whatsapp">WhatsApp </label>
               </div>
               <div class="form-floating mb-3">
-                <input class="form-control form-control-lg" placeholder="instagram" type="text" name="instagram" maxlength="80" required="required"/>
+                <input class="form-control form-control-lg" placeholder="instagram" type="text" name="instagram" maxlength="80" />
                 <label class="form-label" for="instagram">Instagram </label>
               </div>
               <div class="form-floating mb-3">
-                <input class="form-control form-control-lg" placeholder="facebook" type="text" name="facebook" maxlength="80" required="required"/>
+                <input class="form-control form-control-lg" placeholder="facebook" type="text" name="facebook" maxlength="80" />
                 <label class="form-label" for="facebook">Facebook </label>
               </div>
               <div class="form-floating mb-3">
-                <input class="form-control form-control-lg" placeholder="linkedin" type="text" name="linkedin" maxlength="80" required="required"/>
+                <input class="form-control form-control-lg" placeholder="linkedin" type="text" name="linkedin" maxlength="80" />
                 <label class="form-label" for="linkedin">Linkedin </label>
               </div>
               <div class="form-floating mb-3">
-                <input class="form-control form-control-lg" placeholder="tiktok" type="text" name="tiktok" maxlength="80" required="required"/>
+                <input class="form-control form-control-lg" placeholder="tiktok" type="text" name="tiktok" maxlength="80"/>
                 <label class="form-label" for="tiktok">Tik-tok </label>
               </div>
               <div class="form-floating mb-3">
-                <input class="form-control form-control-lg" placeholder="twitter" type="text" name="twitter" maxlength="80" required="required"/>
+                <input class="form-control form-control-lg" placeholder="twitter" type="text" name="twitter" maxlength="80" />
                 <label class="form-label" for="twitter">Twitter </label>
               </div>
               <div class="form-floating mb-3">
-                <input class="form-control form-control-lg" placeholder="github" type="text" name="github" maxlength="80" required="required"/>
+                <input class="form-control form-control-lg" placeholder="github" type="text" name="github" maxlength="80" />
                 <label class="form-label" for="github">Github </label>
               </div>
               <div class="form-floating mb-3">
-                <input class="form-control form-control-lg" placeholder="sitioweb" type="text" name="sitioWeb" maxlength="80" required="required"/>
+                <input class="form-control form-control-lg" placeholder="sitioweb" type="text" name="sitioWeb" maxlength="80" />
                 <label class="form-label" for="sitioWeb">Sitio web </label>
               </div>
           </div>

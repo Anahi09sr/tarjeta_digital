@@ -64,7 +64,7 @@ include './model/conexion.php';
                             </div>
                             <div class="modal-body">
                             <div class="content-form formulario-container" data-info-id="<?php echo $info->id_details; ?>">
-                            <form action="./edit_tarjeta.php" method="POST" enctype="multipart/form-data">
+                            <form action="./edit_tarjeta.php" id="formularioEditTarjeta<?= $info->id_details?>" method="POST" enctype="multipart/form-data">
     <!-- Agrega el campo oculto para id_details -->
     <input type="hidden" name="id_details" value="<?php echo $info->id_details; ?>">
                                 <div class="form-floating mb-3">
@@ -149,9 +149,8 @@ include './model/conexion.php';
                                 <button class="btn btn-danger btn-lg" data-bs-dismiss="modal" aria-label="Close" id="modalCancelarBtn">Cancelar</button>
                                 <button class="btn btn-success btn-lg" type="submit" name="guardar">Editar</button>
                               </div>
-                              <input type="hidden" name="oculto" value=1>
                               <div class="form-floating mb-3">
-                              <div class="" id="mensajeEditTarjeta<?=$info->id_details?>"></div>
+                                <div class="" id="mensajeEditTarjeta<?=$info->id_details?>"></div>
                               </div>
                               </form>
                             </div>

@@ -38,13 +38,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         echo "ID: " . $id_details . "<br>";
 
+        // Inicializar variables para datos de imagen y tipo de archivo
+        $datos_imagen = null;
+        $tipoArchivo = null;
+
         // Procesar el logo de manera similar a la imagen 'foto'
         if (isset($_FILES['logo']) && is_uploaded_file($_FILES['logo']['tmp_name'])) {
             $datos_logo = file_get_contents($_FILES['logo']['tmp_name']);
         } else {
             // Definir un comportamiento por defecto si no se proporciona el logo
-            echo "Error: Uno o ambos archivos no fueron cargados correctamente.";
-            exit();
+            $datos_logo = null;
         }
 
         if (isset($_FILES['foto']) && is_uploaded_file($_FILES['foto']['tmp_name'])) {
@@ -55,25 +58,38 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 echo "Error: Tipo de archivo no permitido";
                 exit();
             }
+        }
 
-            $sentencia = $bd->prepare("UPDATE details SET nombre = ?, foto = ?, tipofoto = ?, empresa = ?, logo = ?, puesto = ?, telefono = ?, email1 = ?, email2 = ?, whatsapp = ?, instagram = ?, facebook = ?, linkedin = ?, tiktok = ?, twitter = ?, github = ?, sitioWeb = ? WHERE id_details = ?");
-            $resultado = $sentencia->execute([$nombre, $datos_imagen, $tipoArchivo, $empresa, $datos_logo, $puesto, $telefono, $email1, $email2, $whatsapp, $instagram, $facebook, $linkedin, $tiktok, $twitter, $github, $sitioWeb, $id_details]);
+        // Crear la consulta SQL
+        $sql = "UPDATE details SET nombre = ?, empresa = ?, puesto = ?, telefono = ?, email1 = ?, email2 = ?, whatsapp = ?, instagram = ?, facebook = ?, linkedin = ?, tiktok = ?, twitter = ?, github = ?, sitioWeb = ?";
 
-            if ($resultado) {
-                echo "Operación exitosa: Se ha actualizado correctamente el producto: "  . $id_details;
-            } else {
-                echo "Error: Ocurrió un error en la transacción.";
-            }
+        // Agregar los valores que se van a actualizar
+        $parametros = array($nombre, $empresa, $puesto, $telefono, $email1, $email2, $whatsapp, $instagram, $facebook, $linkedin, $tiktok, $twitter, $github, $sitioWeb);
+
+        // Agregar los valores para la foto y el logo si están disponibles
+        if ($datos_imagen !== null && $tipoArchivo !== null) {
+            $sql .= ", foto = ?, tipofoto = ?";
+            $parametros[] = $datos_imagen;
+            $parametros[] = $tipoArchivo;
+        }
+
+        if ($datos_logo !== null) {
+            $sql .= ", logo = ?";
+            $parametros[] = $datos_logo;
+        }
+
+        // Agregar la condición WHERE para el id_details
+        $sql .= " WHERE id_details = ?";
+        $parametros[] = $id_details;
+
+        // Preparar y ejecutar la consulta
+        $sentencia = $bd->prepare($sql);
+        $resultado = $sentencia->execute($parametros);
+
+        if ($resultado) {
+            echo "Operación exitosa: Se ha actualizado correctamente el producto: " . $id_details;
         } else {
-            // Si no se seleccionó un archivo 'foto', realizar la actualización sin modificar la foto
-            $sentencia = $bd->prepare("UPDATE details SET nombre = ?, empresa = ?, puesto = ?, telefono = ?, email1 = ?, email2 = ?, whatsapp = ?, instagram = ?, facebook = ?, linkedin = ?, tiktok = ?, twitter = ?, github = ?, sitioWeb = ? WHERE id_details = ?");
-            $resultado = $sentencia->execute([$nombre, $empresa, $puesto, $telefono, $email1, $email2, $whatsapp, $instagram, $facebook, $linkedin, $tiktok, $twitter, $github, $sitioWeb, $id_details]);
-
-            if ($resultado) {
-                echo "Operación exitosa: Se ha actualizado correctamente el producto: " . $id_details ;
-            } else {
-                echo "Error: Ocurrió un error en la transacción." ;
-            }
+            echo "Error: Ocurrió un error en la transacción.";
         }
     } else {
         echo "Error: El campo id_details no está presente en el formulario.";

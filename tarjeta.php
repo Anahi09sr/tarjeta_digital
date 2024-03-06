@@ -63,7 +63,7 @@ include './model/conexion.php';
                     <div class="modal-dialog modal-lg modal-dialog-centered">
                       <div class="modal-content">
                         <div class="modal-header">
-                          <h5 class="modal-title" id="modalEditar<?=$info->id_details ?>Label">Detalles de la
+                          <h5 class="modal-title" id="modalEdit<?=$info->id_details ?>Label">Detalles de la
                             <br /><strong>Tarjeta</strong></h5>
                           <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
@@ -71,7 +71,7 @@ include './model/conexion.php';
                           <div class="content-form formulario-container"
                             data-info-id="<?php echo $info->id_details; ?>">
                             <form action="./edit_tarjeta.php" id="formularioEditTarjeta<?= $info->id_details?>"
-                              method="POST" enctype="multipart/form-data">
+                              method="POST" enctype="multipart/form-data" class="formularioEditTarjeta">
                               <!-- Agrega el campo oculto para id_details -->
                               <input type="hidden" name="id_details" value="<?php echo $info->id_details; ?>">
                               <div class="form-floating mb-3">
@@ -178,7 +178,8 @@ include './model/conexion.php';
                             <button class="btn btn-danger btn-lg" data-bs-dismiss="modal" aria-label="Close"
                               id="modalCancelarBtn">Cancelar</button>
                             <button class="btn btn-success btn-lg" type="submit" name="guardar">Editar</button>
-                          </div>
+                          </div><br>
+                          <input type="hidden" name="oculto" value=1>
                           <div class="form-floating mb-3">
                             <div class="" id="mensajeEditTarjeta<?=$info->id_details?>"></div>
                           </div>
@@ -195,8 +196,8 @@ include './model/conexion.php';
                           <h5 class="modal-title" id="modalDeleteTarjeta<?=$info->id_details ?>Label">Eliminar</h5>
                           <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="content-form formulario-container" data-info-id="<?php  $info->id_details; ?>">
-                        <form action="./delete_tarjeta.php" id="formularioDeleteTarjeta<?= $info->id_details; ?>" method="POST">
+                        <div class="content-form formulario-container" data-info-id="<?php echo $info->id_details; ?>">
+                        <form action="./delete_tarjeta.php" id="formularioDeleteTarjeta<?= $info->id_details; ?>" method="POST" class="formularioDeleteTarjeta"">
                         <!-- Agrega el campo oculto para id_details -->
                         <input type="hidden" name="id_details" value="<?php echo $info->id_details; ?>">
                         <div class="modal-body">¿Estás seguro que deseas eliminar este registro?</div>
@@ -210,6 +211,7 @@ include './model/conexion.php';
                         </div>
                         </form>
                       </div>
+                    </div>
                     </div>
                   </div>
 
@@ -227,7 +229,7 @@ include './model/conexion.php';
       });
     </script>
   </section>
-  <script src="./js/ajax_modal_editTarjeta.js"></script>
+  <script src="./js/ajax_modal_editTarjeta.js""></script>
   <script src="./js/ajax_modal_deleteTarjeta.js"></script>
   <script src="./js/script.js"></script>
   <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>

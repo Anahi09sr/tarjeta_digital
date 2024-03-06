@@ -1,12 +1,15 @@
 <?php
-// Incluir el archivo de la conexión a la BD
 include './model/conexion.php';
-include './validaciones.php';
+include 'validaciones.php';
 
-// Verificar si se ha enviado el formulario
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    try {
-
+    if (!isset($_POST['oculto'])) {
+        exit();
+    }
         noVacio($_POST['nombre'], 'Nombre');
         sinNumeros($_POST['nombre'], 'Nombre');
         dosEspacios($_POST['nombre'], 'Nombre');
@@ -96,10 +99,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $consulta->execute(); // Ejecutar la consulta
 
-        echo "Operación exitosa: Se ha guardado correctamente";
-    } catch (PDOException $e) {
-        echo "Error: " . $e->getMessage(); // Capturar cualquier error de ejecución
-    }
+        if ($consulta) {
+            echo "Operación exitosa: Se ha guardado correctamente";
+            exit();
+        } else {
+            echo "Error: se ha producido un error en el registro a la base de datos.";
+            exit();
+        }
 } else {
     echo "Error: Solicitud no válida.";
 }

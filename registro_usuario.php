@@ -1,10 +1,70 @@
 <?php
 // Incluir el archivo de la conexión a la BD
 include './model/conexion.php';
+include './validaciones.php';
 
 // Verificar si se ha enviado el formulario
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
+
+        noVacio($_POST['nombre'], 'Nombre');
+        sinNumeros($_POST['nombre'], 'Nombre');
+        dosEspacios($_POST['nombre'], 'Nombre');
+        sinCespeciales($_POST['nombre'], 'Nombre');
+        sinCespecialesM($_POST['nombre'], 'Nombre');
+        digitosNombre($_POST['nombre'], 'Nombre');
+        //Validacion para numero
+        noVacio($_POST['telefono'], 'Telefono');
+        soloNumeros($_POST['telefono'], 'Telefono');
+        digitosTelefono($_POST['telefono'], 'Telefono');
+        sinEspacios($_POST['telefono'], 'Telefono');
+        // email
+        noVacio($_POST['email'], 'Email');
+        sinEspacios($_POST['email'], 'Email');
+        dosEspacios($_POST['email'], 'Email');
+        digitosEmail($_POST['email'], 'Email');
+        //Ciudad
+        noVacio($_POST['ciudad'], 'Ciudad');
+        sinNumeros($_POST['ciudad'], 'Ciudad');
+        dosEspacios($_POST['ciudad'], 'Ciudad');
+        sinCespeciales($_POST['ciudad'], 'Ciudad');
+        sinCespecialesM($_POST['ciudad'], 'Ciudad');
+        digitosNombre($_POST['ciudad'], 'Ciudad');
+        //Estado
+        noVacio($_POST['estado'], 'Estado');
+        sinNumeros($_POST['estado'], 'Estado');
+        sinEspacios($_POST['estado'], 'Estado');
+        dosEspacios($_POST['estado'], 'Estado');
+        sinCespeciales($_POST['estado'], 'Estado');
+        sinCespecialesM($_POST['estado'], 'Estado');
+        digitosNombre($_POST['estado'], 'Estado');
+        //Codigo postal
+        noVacio($_POST['cp'], 'CP');
+        soloNumeros($_POST['cp'], 'CP');
+        sinEspacios($_POST['cp'], 'CP');
+        //Direccion de fatura
+        dosEspacios($_POST['direccion_factura'], 'Dirección de factura');
+        sinCespeciales($_POST['direccion_factura'], 'Dirección de factura');
+        sinCespecialesM($_POST['direccion_factura'], 'Dirección de factura');
+        digitosNombre($_POST['direccion_factura'], 'Dirección de factura');
+        // Razon social
+        dosEspacios($_POST['razon_social'], 'Razón social');
+        sinCespeciales($_POST['razon_social'], 'Razón social');
+        sinCespecialesM($_POST['razon_social'], 'Razón social');
+        digitosNombre($_POST['razon_social'], 'Razón social');
+        //RFC
+        sinEspacios($_POST['rfc'], 'RFC');
+        dosEspacios($_POST['rfc'], 'RFC');
+        sinCespeciales($_POST['rfc'], 'RFC');
+        sinCespecialesM($_POST['rfc'], 'RFC');
+        digitosNombre($_POST['rfc'], 'RFC');
+        ////Direccion de fatura
+        dosEspacios($_POST['direccion_fiscal'], 'Dirección  fiscal');
+        sinCespeciales($_POST['direccion_fiscal'], 'Dirección  fiscal');
+        sinCespecialesM($_POST['direccion_fiscal'], 'Dirección  fiscal');
+        digitosNombre($_POST['direccion_fiscal'], 'Dirección  fiscal');
+
+        
         // Recuperar los valores del formulario
         $nombre = $_POST['nombre'];
         $telefono = $_POST['telefono'];

@@ -11,6 +11,42 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!isset($_POST['oculto']) || $_POST['oculto'] !== '1') {
         exit();
     }
+    //Validacion para nombre
+    noVacio($_POST['nombre'], 'Nombre');
+    sinNumeros($_POST['nombre'], 'Nombre');
+    dosEspacios($_POST['nombre'], 'Nombre');
+    sinCespeciales($_POST['nombre'], 'Nombre');
+    sinCespecialesM($_POST['nombre'], 'Nombre');
+    digitosNombre($_POST['nombre'], 'Nombre');
+      //Validacion para empresa
+    noVacio($_POST['empresa'], 'Empresa');
+    dosEspacios($_POST['empresa'], 'Empresa');
+    sinCespeciales($_POST['empresa'], 'Empresa');
+    sinCespecialesM($_POST['empresa'], 'Empresa');
+    digitosNombre($_POST['empresa'], 'Empresa');
+    //Validacion para puesto
+    noVacio($_POST['puesto'], 'Puesto');
+    sinNumeros($_POST['puesto'], 'Puesto');
+    dosEspacios($_POST['puesto'], 'Puesto');
+    sinCespeciales($_POST['puesto'], 'Puesto');
+    sinCespecialesM($_POST['puesto'], 'Puesto');
+    digitosNombre($_POST['puesto'], 'Puesto');
+    //Validacion para numero
+    noVacio($_POST['telefono'], 'Telefono');
+    soloNumeros($_POST['telefono'], 'Telefono');
+    digitosTelefono($_POST['telefono'], 'Telefono');
+    sinEspacios($_POST['telefono'], 'Telefono');
+    // email
+    noVacio($_POST['email1'], 'Email1');
+    sinEspacios($_POST['email1'], 'Email1');
+    dosEspacios($_POST['email1'], 'Email1');
+    digitosEmail($_POST['email1'], 'Email1');
+    // emai2
+    sinEspacios($_POST['email2'], 'Email1');
+    dosEspacios($_POST['email2'], 'Email1');
+    digitosEmail($_POST['email2'], 'Email1');
+    //Validaciones para redes sociales
+    
 
     // Verificar si el campo id_details está presente en el formulario
     if (isset($_POST['id_details'])) {
